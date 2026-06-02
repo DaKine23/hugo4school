@@ -338,102 +338,158 @@ a {
   transform: translate3d(calc(var(--scroll-progress) * -8rem), calc(var(--scroll-progress) * -1rem), 0) scale(0.72);
 }
 
-.playground {
+.tree-line {
   position: absolute;
-  right: clamp(1rem, 7vw, 7rem);
-  bottom: calc(2.2rem + var(--scroll-progress) * -3rem);
-  width: clamp(12rem, 24vw, 21rem);
-  height: clamp(8rem, 15vw, 13rem);
-  opacity: 0.42;
-  transform:
-    translate3d(calc(var(--fence-wave) * -1.4rem), calc(var(--fence-bob) * 0.45rem), 0)
-    scale(calc(1 + var(--scroll-progress) * 0.04));
+  left: -6vw;
+  right: -6vw;
+  bottom: calc(8.5rem + var(--scroll-progress) * -2rem);
+  height: 18rem;
+  opacity: 0.46;
+  transform: translate3d(calc(var(--scroll-progress) * -2rem), calc(var(--fence-bob) * 0.45rem), 0);
 }
 
-.playground::before {
-  content: "";
+.tree-line span {
   position: absolute;
-  left: 0.4rem;
-  right: 0.4rem;
   bottom: 0;
-  height: 0.45rem;
-  border-radius: 999px;
-  background: rgba(79, 157, 105, 0.72);
+  width: 15rem;
+  height: 12rem;
+  border-radius: 48% 52% 44% 56%;
+  background:
+    radial-gradient(circle at 34% 34%, rgba(95, 174, 63, 0.92), transparent 34%),
+    radial-gradient(circle at 66% 28%, rgba(47, 139, 54, 0.95), transparent 35%),
+    radial-gradient(circle at 44% 68%, rgba(37, 111, 47, 0.9), transparent 42%);
+  filter: drop-shadow(0 0.7rem 1rem rgba(36, 49, 61, 0.08));
 }
 
-.slide {
-  position: absolute;
-  left: 1rem;
-  bottom: 0.3rem;
-  width: 6.7rem;
-  height: 6.4rem;
-  border-left: 0.55rem solid rgba(47, 127, 193, 0.78);
-  border-top: 0.55rem solid rgba(47, 127, 193, 0.78);
-}
-
-.slide::before {
+.tree-line span::before {
   content: "";
   position: absolute;
-  left: 1.9rem;
-  bottom: -0.05rem;
+  left: 48%;
+  bottom: -4.5rem;
+  width: 0.85rem;
+  height: 6rem;
+  border-radius: 999px;
+  background: rgba(111, 83, 51, 0.55);
+}
+
+.tree-line span:nth-child(1) {
+  left: 0;
+  width: 19rem;
+  height: 14rem;
+}
+
+.tree-line span:nth-child(2) {
+  left: 18vw;
+  width: 16rem;
+  height: 13rem;
+  bottom: 1.4rem;
+}
+
+.tree-line span:nth-child(3) {
+  left: 41vw;
+  width: 20rem;
+  height: 16rem;
+  background:
+    radial-gradient(circle at 34% 34%, rgba(116, 180, 73, 0.9), transparent 34%),
+    radial-gradient(circle at 66% 28%, rgba(63, 142, 61, 0.92), transparent 35%),
+    radial-gradient(circle at 44% 68%, rgba(50, 118, 54, 0.88), transparent 42%);
+}
+
+.tree-line span:nth-child(4) {
+  right: 13vw;
+  width: 18rem;
+  height: 14rem;
+}
+
+.tree-line span:nth-child(5) {
+  right: -2rem;
+  width: 21rem;
+  height: 17rem;
+}
+
+.schoolyard {
+  position: absolute;
+  left: -8vw;
+  right: -8vw;
+  bottom: calc(-4rem + var(--scroll-progress) * -1.4rem);
+  height: 19rem;
+  opacity: 0.44;
+  background:
+    radial-gradient(circle at 16% 72%, rgba(47, 127, 193, 0.34) 0 0.12rem, transparent 0.16rem),
+    radial-gradient(circle at 32% 60%, rgba(230, 111, 81, 0.35) 0 0.14rem, transparent 0.18rem),
+    radial-gradient(circle at 55% 72%, rgba(79, 157, 105, 0.32) 0 0.12rem, transparent 0.16rem),
+    linear-gradient(180deg, rgba(245, 207, 143, 0.2), rgba(233, 179, 103, 0.56));
+  background-size: 5rem 4rem, 6rem 4rem, 7rem 5rem, auto;
+  clip-path: ellipse(78% 46% at 50% 72%);
+  transform: translateX(calc(var(--fence-wave) * -1.2rem));
+}
+
+.yard-fence {
+  position: absolute;
+  left: 18vw;
+  right: 12vw;
+  top: 3.6rem;
+  height: 1.8rem;
+  border-top: 0.32rem solid rgba(140, 118, 79, 0.44);
+  border-bottom: 0.32rem solid rgba(140, 118, 79, 0.32);
+  background: repeating-linear-gradient(90deg, transparent 0 1.3rem, rgba(140, 118, 79, 0.38) 1.3rem 1.55rem);
+}
+
+.climbing-net {
+  position: absolute;
+  left: 18vw;
+  top: 5rem;
   width: 8rem;
-  height: 0.75rem;
-  border-radius: 999px;
-  background: rgba(230, 111, 81, 0.82);
-  transform: rotate(-28deg);
-  transform-origin: left center;
+  height: 5.2rem;
+  border: 0.34rem solid rgba(184, 117, 47, 0.68);
+  border-radius: 0.3rem;
+  background:
+    repeating-linear-gradient(90deg, transparent 0 1rem, rgba(80, 117, 94, 0.38) 1rem 1.12rem),
+    repeating-linear-gradient(0deg, transparent 0 0.9rem, rgba(80, 117, 94, 0.38) 0.9rem 1.02rem);
 }
 
-.slide::after {
+.bench {
+  position: absolute;
+  left: 26vw;
+  bottom: 4.5rem;
+  width: 13rem;
+  height: 2.8rem;
+  border-radius: 0.3rem;
+  background:
+    linear-gradient(180deg, rgba(186, 119, 45, 0.75) 0 0.45rem, transparent 0.45rem 0.9rem, rgba(186, 119, 45, 0.75) 0.9rem 1.35rem, transparent 1.35rem);
+}
+
+.bench::before,
+.bench::after {
   content: "";
   position: absolute;
-  left: 0.2rem;
-  top: 1rem;
-  width: 3.2rem;
-  height: 0.4rem;
+  bottom: -1.2rem;
+  width: 0.42rem;
+  height: 1.7rem;
   border-radius: 999px;
-  background: rgba(244, 197, 66, 0.85);
+  background: rgba(111, 83, 51, 0.55);
 }
 
-.swing {
-  position: absolute;
-  right: 1.2rem;
-  bottom: 0.3rem;
-  width: 6.5rem;
-  height: 7rem;
-  border-left: 0.48rem solid rgba(123, 97, 168, 0.72);
-  border-right: 0.48rem solid rgba(123, 97, 168, 0.72);
-  border-top: 0.48rem solid rgba(123, 97, 168, 0.72);
-  transform: skewX(-7deg);
-}
-
-.swing::before,
-.swing::after {
-  content: "";
-  position: absolute;
-  top: 0.2rem;
-  width: 0.18rem;
-  height: 4.2rem;
-  background: rgba(36, 49, 61, 0.36);
-}
-
-.swing::before {
+.bench::before {
   left: 2rem;
 }
 
-.swing::after {
+.bench::after {
   right: 2rem;
 }
 
-.ball {
+.color-tiles {
   position: absolute;
-  left: 50%;
-  bottom: 0.7rem;
-  width: 1.8rem;
-  height: 1.8rem;
-  border-radius: 50%;
-  background: rgba(217, 75, 95, 0.82);
-  box-shadow: inset -0.35rem -0.35rem 0 rgba(36, 49, 61, 0.08);
+  right: 13vw;
+  bottom: 2.2rem;
+  width: 12rem;
+  height: 6rem;
+  opacity: 0.82;
+  transform: skewX(-12deg) rotate(-4deg);
+  background:
+    linear-gradient(90deg, rgba(47, 127, 193, 0.78) 50%, rgba(230, 111, 81, 0.78) 0) 0 0 / 3rem 3rem,
+    linear-gradient(90deg, rgba(230, 111, 81, 0.78) 50%, rgba(47, 127, 193, 0.78) 0) 1.5rem 1.5rem / 3rem 3rem;
+  border-radius: 0.35rem;
 }
 
 .site-nav,
@@ -861,12 +917,57 @@ main {
     display: none;
   }
 
-  .playground {
-    right: -3rem;
-    bottom: calc(1.2rem + var(--scroll-progress) * -2rem);
-    width: 13rem;
-    height: 8rem;
-    opacity: 0.28;
+  .tree-line {
+    left: -14rem;
+    right: -10rem;
+    bottom: calc(7rem + var(--scroll-progress) * -1.2rem);
+    height: 14rem;
+    opacity: 0.34;
+  }
+
+  .tree-line span {
+    width: 12rem;
+    height: 9rem;
+  }
+
+  .tree-line span:nth-child(2),
+  .tree-line span:nth-child(4) {
+    display: none;
+  }
+
+  .schoolyard {
+    left: -22vw;
+    right: -22vw;
+    bottom: calc(-4.2rem + var(--scroll-progress) * -0.8rem);
+    height: 15rem;
+    opacity: 0.3;
+  }
+
+  .yard-fence {
+    left: 14vw;
+    right: 10vw;
+    top: 3rem;
+  }
+
+  .climbing-net {
+    left: 18vw;
+    top: 4.4rem;
+    width: 5rem;
+    height: 3.7rem;
+  }
+
+  .bench {
+    left: 33vw;
+    bottom: 3.8rem;
+    width: 7rem;
+  }
+
+  .color-tiles {
+    right: 8vw;
+    bottom: 1.8rem;
+    width: 7rem;
+    height: 4rem;
+    background-size: 2rem 2rem, 2rem 2rem;
   }
 
   .quick-info::before,
