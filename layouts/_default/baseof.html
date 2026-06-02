@@ -21,7 +21,7 @@
       </a>
       <nav class="site-nav" aria-label="Hauptnavigation">
         {{ range site.Menus.main }}
-          <a href="{{ .URL }}">{{ .Name }}</a>
+          <a class="{{ if $.IsMenuCurrent "main" . }}is-active{{ else if $.HasMenuCurrent "main" . }}is-active{{ end }}" href="{{ .URL }}">{{ .Name }}</a>
         {{ end }}
       </nav>
     </header>
@@ -38,15 +38,8 @@
       <div class="cloud cloud-one"></div>
       <div class="cloud cloud-two"></div>
       <div class="cloud cloud-three"></div>
-      <div class="tree-line">
-        <span></span><span></span><span></span><span></span><span></span>
-      </div>
-      <div class="schoolyard">
-        <span class="yard-fence"></span>
-        <span class="climbing-net"></span>
-        <span class="bench"></span>
-        <span class="color-tiles"></span>
-      </div>
+      <div class="scene-photo"></div>
+      <div class="scene-foreground"></div>
     </div>
 
     <main>

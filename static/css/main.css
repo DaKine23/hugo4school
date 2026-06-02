@@ -22,12 +22,14 @@
 
 html,
 body {
+  min-height: 100%;
   max-width: 100%;
   overflow-x: hidden;
   overflow-x: clip;
 }
 
 body {
+  min-height: 100vh;
   margin: 0;
   color: var(--ink);
   background:
@@ -35,6 +37,8 @@ body {
     var(--paper);
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   line-height: 1.6;
+  display: flex;
+  flex-direction: column;
 }
 
 @supports (animation-timeline: scroll()) {
@@ -136,14 +140,18 @@ a {
   perspective: 500px;
   transform: translateX(calc(var(--scroll-progress) * -1.5rem));
   width: calc(100% + 1.5rem);
+  box-shadow: 0 0.2rem 0.8rem rgba(36, 49, 61, 0.08);
+  position: relative;
+  z-index: 8;
 }
 
 .fence-strip span {
   height: 1.2rem;
+  opacity: 1;
   transform:
     translateY(calc(var(--fence-wave) * -0.12rem))
     rotate(calc(var(--fence-wave) * 1.8deg));
-  transition: filter 180ms ease;
+  transition: filter 180ms ease, opacity 180ms ease;
 }
 
 .fence-strip span:nth-child(1),
@@ -188,6 +196,19 @@ a {
 .scroll-fence span:nth-child(13) { background: var(--yellow); }
 .scroll-fence span:nth-child(14) { background: var(--green); }
 
+.fence-strip span:nth-child(1) { background: #d94b5f; }
+.fence-strip span:nth-child(2) { background: #f4c542; }
+.fence-strip span:nth-child(3) { background: #2f7fc1; }
+.fence-strip span:nth-child(4) { background: #4f9d69; }
+.fence-strip span:nth-child(5) { background: #7b61a8; }
+.fence-strip span:nth-child(6) { background: #e66f51; }
+.fence-strip span:nth-child(7) { background: #2f7fc1; }
+.fence-strip span:nth-child(8) { background: #f4c542; }
+.fence-strip span:nth-child(9) { background: #4f9d69; }
+.fence-strip span:nth-child(10) { background: #d94b5f; }
+.fence-strip span:nth-child(11) { background: #7b61a8; }
+.fence-strip span:nth-child(12) { background: #e66f51; }
+
 .fence-strip span:nth-child(odd) {
   height: 0.9rem;
 }
@@ -205,7 +226,7 @@ a {
 }
 
 :root[data-scrolled="true"] .fence-strip span {
-  filter: saturate(1.12);
+  filter: saturate(1.2);
 }
 
 .scroll-fence {
@@ -314,7 +335,7 @@ a {
     3.7rem -0.45rem 0 0.55rem rgba(255, 255, 255, 0.72),
     5.6rem 0 0 0.1rem rgba(255, 255, 255, 0.72);
   filter: drop-shadow(0 0.4rem 0.9rem rgba(47, 127, 193, 0.08));
-  transform: translate3d(calc(var(--scroll-progress) * -5rem), calc(var(--scroll-progress) * 2.2rem), 0);
+  transform: translateY(calc(var(--scroll-progress) * 1.4rem));
 }
 
 .cloud-one {
@@ -327,7 +348,7 @@ a {
   right: 12vw;
   width: 6.5rem;
   opacity: 0.58;
-  transform: translate3d(calc(var(--scroll-progress) * 6rem), calc(var(--scroll-progress) * 1.4rem), 0) scale(0.88);
+  transform: translateY(calc(var(--scroll-progress) * 1rem)) scale(0.88);
 }
 
 .cloud-three {
@@ -335,161 +356,37 @@ a {
   left: 56vw;
   width: 5.8rem;
   opacity: 0.45;
-  transform: translate3d(calc(var(--scroll-progress) * -8rem), calc(var(--scroll-progress) * -1rem), 0) scale(0.72);
+  transform: translateY(calc(var(--scroll-progress) * -0.8rem)) scale(0.72);
 }
 
-.tree-line {
+.scene-photo,
+.scene-foreground {
   position: absolute;
-  left: -6vw;
-  right: -6vw;
-  bottom: calc(8.5rem + var(--scroll-progress) * -2rem);
-  height: 18rem;
-  opacity: 0.46;
-  transform: translate3d(calc(var(--scroll-progress) * -2rem), calc(var(--fence-bob) * 0.45rem), 0);
+  inset-inline: 0;
+  background-image:
+    linear-gradient(180deg, rgba(223, 242, 255, 0.18), rgba(255, 250, 241, 0.18)),
+    url("/images/spielplatz-bg.webp");
+  background-repeat: no-repeat;
+  background-size: cover;
+  pointer-events: none;
 }
 
-.tree-line span {
-  position: absolute;
-  bottom: 0;
-  width: 15rem;
-  height: 12rem;
-  border-radius: 48% 52% 44% 56%;
-  background:
-    radial-gradient(circle at 34% 34%, rgba(95, 174, 63, 0.92), transparent 34%),
-    radial-gradient(circle at 66% 28%, rgba(47, 139, 54, 0.95), transparent 35%),
-    radial-gradient(circle at 44% 68%, rgba(37, 111, 47, 0.9), transparent 42%);
-  filter: drop-shadow(0 0.7rem 1rem rgba(36, 49, 61, 0.08));
-}
-
-.tree-line span::before {
-  content: "";
-  position: absolute;
-  left: 48%;
-  bottom: -4.5rem;
-  width: 0.85rem;
-  height: 6rem;
-  border-radius: 999px;
-  background: rgba(111, 83, 51, 0.55);
-}
-
-.tree-line span:nth-child(1) {
-  left: 0;
-  width: 19rem;
-  height: 14rem;
-}
-
-.tree-line span:nth-child(2) {
-  left: 18vw;
-  width: 16rem;
-  height: 13rem;
-  bottom: 1.4rem;
-}
-
-.tree-line span:nth-child(3) {
-  left: 41vw;
-  width: 20rem;
-  height: 16rem;
-  background:
-    radial-gradient(circle at 34% 34%, rgba(116, 180, 73, 0.9), transparent 34%),
-    radial-gradient(circle at 66% 28%, rgba(63, 142, 61, 0.92), transparent 35%),
-    radial-gradient(circle at 44% 68%, rgba(50, 118, 54, 0.88), transparent 42%);
-}
-
-.tree-line span:nth-child(4) {
-  right: 13vw;
-  width: 18rem;
-  height: 14rem;
-}
-
-.tree-line span:nth-child(5) {
-  right: -2rem;
-  width: 21rem;
-  height: 17rem;
-}
-
-.schoolyard {
-  position: absolute;
-  left: -8vw;
-  right: -8vw;
-  bottom: calc(-4rem + var(--scroll-progress) * -1.4rem);
-  height: 19rem;
-  opacity: 0.44;
-  background:
-    radial-gradient(circle at 16% 72%, rgba(47, 127, 193, 0.34) 0 0.12rem, transparent 0.16rem),
-    radial-gradient(circle at 32% 60%, rgba(230, 111, 81, 0.35) 0 0.14rem, transparent 0.18rem),
-    radial-gradient(circle at 55% 72%, rgba(79, 157, 105, 0.32) 0 0.12rem, transparent 0.16rem),
-    linear-gradient(180deg, rgba(245, 207, 143, 0.2), rgba(233, 179, 103, 0.56));
-  background-size: 5rem 4rem, 6rem 4rem, 7rem 5rem, auto;
-  clip-path: ellipse(78% 46% at 50% 72%);
-  transform: translateX(calc(var(--fence-wave) * -1.2rem));
-}
-
-.yard-fence {
-  position: absolute;
-  left: 18vw;
-  right: 12vw;
-  top: 3.6rem;
-  height: 1.8rem;
-  border-top: 0.32rem solid rgba(140, 118, 79, 0.44);
-  border-bottom: 0.32rem solid rgba(140, 118, 79, 0.32);
-  background: repeating-linear-gradient(90deg, transparent 0 1.3rem, rgba(140, 118, 79, 0.38) 1.3rem 1.55rem);
-}
-
-.climbing-net {
-  position: absolute;
-  left: 18vw;
+.scene-photo {
   top: 5rem;
-  width: 8rem;
-  height: 5.2rem;
-  border: 0.34rem solid rgba(184, 117, 47, 0.68);
-  border-radius: 0.3rem;
-  background:
-    repeating-linear-gradient(90deg, transparent 0 1rem, rgba(80, 117, 94, 0.38) 1rem 1.12rem),
-    repeating-linear-gradient(0deg, transparent 0 0.9rem, rgba(80, 117, 94, 0.38) 0.9rem 1.02rem);
+  bottom: 0;
+  opacity: 0.32;
+  filter: saturate(0.92) brightness(1.1);
+  background-position:
+    center,
+    center calc(50% + var(--scroll-progress) * -3.5rem);
+  background-size:
+    cover,
+    cover;
+  transform: none;
 }
 
-.bench {
-  position: absolute;
-  left: 26vw;
-  bottom: 4.5rem;
-  width: 13rem;
-  height: 2.8rem;
-  border-radius: 0.3rem;
-  background:
-    linear-gradient(180deg, rgba(186, 119, 45, 0.75) 0 0.45rem, transparent 0.45rem 0.9rem, rgba(186, 119, 45, 0.75) 0.9rem 1.35rem, transparent 1.35rem);
-}
-
-.bench::before,
-.bench::after {
-  content: "";
-  position: absolute;
-  bottom: -1.2rem;
-  width: 0.42rem;
-  height: 1.7rem;
-  border-radius: 999px;
-  background: rgba(111, 83, 51, 0.55);
-}
-
-.bench::before {
-  left: 2rem;
-}
-
-.bench::after {
-  right: 2rem;
-}
-
-.color-tiles {
-  position: absolute;
-  right: 13vw;
-  bottom: 2.2rem;
-  width: 12rem;
-  height: 6rem;
-  opacity: 0.82;
-  transform: skewX(-12deg) rotate(-4deg);
-  background:
-    linear-gradient(90deg, rgba(47, 127, 193, 0.78) 50%, rgba(230, 111, 81, 0.78) 0) 0 0 / 3rem 3rem,
-    linear-gradient(90deg, rgba(230, 111, 81, 0.78) 50%, rgba(47, 127, 193, 0.78) 0) 1.5rem 1.5rem / 3rem 3rem;
-  border-radius: 0.35rem;
+.scene-foreground {
+  display: none;
 }
 
 .site-nav,
@@ -508,11 +405,28 @@ a {
 .site-nav a {
   border-bottom: 0.18rem solid transparent;
   font-weight: 700;
+  transition: border-color 160ms ease, color 160ms ease;
 }
 
-.site-nav a:hover {
-  border-color: var(--yellow);
-}
+.site-nav a:nth-child(1):hover { border-color: var(--red); }
+.site-nav a:nth-child(2):hover { border-color: var(--yellow); }
+.site-nav a:nth-child(3):hover { border-color: var(--blue); }
+.site-nav a:nth-child(4):hover { border-color: var(--green); }
+.site-nav a:nth-child(5):hover { border-color: var(--violet); }
+.site-nav a:nth-child(6):hover { border-color: var(--coral); }
+.site-nav a:nth-child(7):hover { border-color: var(--blue); }
+.site-nav a:nth-child(8):hover { border-color: var(--yellow); }
+.site-nav a:nth-child(9):hover { border-color: var(--green); }
+
+.site-nav a:nth-child(1).is-active { border-color: var(--red); }
+.site-nav a:nth-child(2).is-active { border-color: var(--yellow); }
+.site-nav a:nth-child(3).is-active { border-color: var(--blue); }
+.site-nav a:nth-child(4).is-active { border-color: var(--green); }
+.site-nav a:nth-child(5).is-active { border-color: var(--violet); }
+.site-nav a:nth-child(6).is-active { border-color: var(--coral); }
+.site-nav a:nth-child(7).is-active { border-color: var(--blue); }
+.site-nav a:nth-child(8).is-active { border-color: var(--yellow); }
+.site-nav a:nth-child(9).is-active { border-color: var(--green); }
 
 .hero {
   position: relative;
@@ -648,6 +562,7 @@ a {
 main {
   position: relative;
   z-index: 1;
+  flex: 1 0 auto;
 }
 
 .quick-info,
@@ -665,6 +580,10 @@ main {
   z-index: 2;
 }
 
+.quick-info {
+  z-index: 3;
+}
+
 .quick-info::before,
 .section-grid::before,
 .page::before {
@@ -678,7 +597,7 @@ main {
 }
 
 .section-grid::before {
-  inset: -1.4rem -1rem -2rem;
+  inset: 0.6rem -1rem -2rem;
 }
 
 .page::before {
@@ -760,9 +679,12 @@ main {
   border-top: 0.35rem solid var(--green);
 }
 
-.section-grid article:nth-child(2) { border-top-color: var(--yellow); }
-.section-grid article:nth-child(3) { border-top-color: var(--blue); }
-.section-grid article:nth-child(4) { border-top-color: var(--red); }
+.section-grid article:nth-child(1) { border-top-color: var(--yellow); }
+.section-grid article:nth-child(2) { border-top-color: var(--blue); }
+.section-grid article:nth-child(3) { border-top-color: var(--violet); }
+.section-grid article:nth-child(4) { border-top-color: var(--coral); }
+.section-grid article:nth-child(5) { border-top-color: var(--yellow); }
+.section-grid article:nth-child(6) { border-top-color: var(--green); }
 
 .section-grid h2,
 .item-card h2 {
@@ -815,6 +737,7 @@ main {
 }
 
 .site-footer {
+  flex-shrink: 0;
   margin-top: 3rem;
   border-top: 1px solid var(--line);
   color: var(--muted);
@@ -904,70 +827,37 @@ main {
   .cloud-one {
     top: 18rem;
     left: -1rem;
-    transform: translate3d(calc(var(--scroll-progress) * -2rem), calc(var(--scroll-progress) * 1.2rem), 0) scale(0.72);
+    transform: translateY(calc(var(--scroll-progress) * 0.8rem)) scale(0.72);
   }
 
   .cloud-two {
     top: 30rem;
     right: -2rem;
-    transform: translate3d(calc(var(--scroll-progress) * 2.4rem), calc(var(--scroll-progress) * 1rem), 0) scale(0.62);
+    transform: translateY(calc(var(--scroll-progress) * 0.7rem)) scale(0.62);
   }
 
   .cloud-three {
     display: none;
   }
 
-  .tree-line {
-    left: -14rem;
-    right: -10rem;
-    bottom: calc(7rem + var(--scroll-progress) * -1.2rem);
-    height: 14rem;
-    opacity: 0.34;
+  .scene-photo {
+    inset-inline: 0;
+    top: 8rem;
+    bottom: 0;
+    opacity: 0.26;
+    background-image:
+      linear-gradient(180deg, rgba(223, 242, 255, 0.12), rgba(255, 250, 241, 0.2)),
+      url("/images/spielplatz-mobile.webp");
+    background-size:
+      cover,
+      cover;
+    background-position:
+      center,
+      center calc(50% + var(--scroll-progress) * -2.5rem);
   }
 
-  .tree-line span {
-    width: 12rem;
-    height: 9rem;
-  }
-
-  .tree-line span:nth-child(2),
-  .tree-line span:nth-child(4) {
+  .scene-foreground {
     display: none;
-  }
-
-  .schoolyard {
-    left: -22vw;
-    right: -22vw;
-    bottom: calc(-4.2rem + var(--scroll-progress) * -0.8rem);
-    height: 15rem;
-    opacity: 0.3;
-  }
-
-  .yard-fence {
-    left: 14vw;
-    right: 10vw;
-    top: 3rem;
-  }
-
-  .climbing-net {
-    left: 18vw;
-    top: 4.4rem;
-    width: 5rem;
-    height: 3.7rem;
-  }
-
-  .bench {
-    left: 33vw;
-    bottom: 3.8rem;
-    width: 7rem;
-  }
-
-  .color-tiles {
-    right: 8vw;
-    bottom: 1.8rem;
-    width: 7rem;
-    height: 4rem;
-    background-size: 2rem 2rem, 2rem 2rem;
   }
 
   .quick-info::before,
@@ -975,6 +865,10 @@ main {
   .page::before {
     inset-inline: -0.5rem;
     border-radius: 0.8rem;
+  }
+
+  .section-grid::before {
+    inset-block-start: 0.5rem;
   }
 }
 
