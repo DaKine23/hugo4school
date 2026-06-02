@@ -1,0 +1,11 @@
+Dies ist eine Beispieldatei fuer lokale Downloads.
+
+So koennen Lehrkraefte spaeter eigene Dateien anbieten:
+
+1. Datei im Repository unter static/downloads/ ablegen.
+2. In content/downloads/_index.md einen Link ergaenzen.
+3. Aenderung in GitHub speichern.
+4. GitHub Actions baut und veroeffentlicht die Website automatisch.
+
+Beispiellink:
+/downloads/beispiel.txt
