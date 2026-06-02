@@ -1,0 +1,68 @@
+{{ define "main" }}
+  <section class="hero">
+    <div class="hero-inner">
+      <p class="eyebrow">Grundschule in Schönstedt</p>
+      <h1>{{ site.Params.schoolName }}</h1>
+      <p>{{ site.Params.schoolMotto }}</p>
+      <div class="hero-actions">
+        <a class="button" href="{{ relURL "aktuelles/" }}">Aktuelles ansehen</a>
+        <a class="button secondary" href="{{ relURL "schule/" }}">Über uns</a>
+      </div>
+    </div>
+    <div class="hero-fence" aria-hidden="true">
+      <span></span><span></span><span></span><span></span><span></span><span></span>
+      <span></span><span></span><span></span><span></span>
+    </div>
+  </section>
+
+  <section class="quick-info" aria-label="Wichtige Informationen">
+    <article>
+      <span>Kontakt</span>
+      <strong>{{ site.Params.phone }}</strong>
+      <a href="{{ relURL "kontakt/" }}">Sekretariat und Anfahrt</a>
+    </article>
+    <article>
+      <span>Öffnungszeiten</span>
+      <strong>06:15 - 16:30 Uhr</strong>
+      <a href="{{ relURL "hortbetreuung/" }}">Hortbetreuung ansehen</a>
+    </article>
+    <article>
+      <span>Schulanmeldung</span>
+      <strong>Infos für Schulanfänger</strong>
+      <a href="{{ relURL "schulanmeldung/" }}">Zur Anmeldung</a>
+    </article>
+  </section>
+
+  <section class="section-grid" aria-label="Schnelleinstieg">
+    <article>
+      <h2>Aktuelles</h2>
+      <p>Neuigkeiten, Hinweise und Rueckblicke aus dem Schulleben.</p>
+      <a href="{{ relURL "aktuelles/" }}">Mehr erfahren</a>
+    </article>
+    <article>
+      <h2>Termine</h2>
+      <p>Wichtige Tage, Veranstaltungen und schulfreie Zeiten auf einen Blick.</p>
+      <a href="{{ relURL "termine/" }}">Termine ansehen</a>
+    </article>
+    <article>
+      <h2>Schulleben</h2>
+      <p>Projekte, Feste, Pausen und Aktionen, die unsere Schule bunt machen.</p>
+      <a href="{{ relURL "schulleben/" }}">Schulleben entdecken</a>
+    </article>
+    <article>
+      <h2>Eltern</h2>
+      <p>Informationen und Materialien fuer Familien.</p>
+      <a href="{{ relURL "eltern/" }}">Zum Elternbereich</a>
+    </article>
+    <article>
+      <h2>Downloads</h2>
+      <p>Elternbriefe, Formulare und wichtige Dokumente an einem Ort.</p>
+      <a href="{{ relURL "downloads/" }}">Downloads öffnen</a>
+    </article>
+    <article>
+      <h2>Förderverein</h2>
+      <p>Gemeinsam Schule unterstützen und Projekte möglich machen.</p>
+      <a href="{{ relURL "foerderverein/" }}">Mehr erfahren</a>
+    </article>
+  </section>
+{{ end }}

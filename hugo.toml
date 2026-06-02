@@ -1,0 +1,53 @@
+baseURL = "https://example.com/"
+languageCode = "de-de"
+title = "Staatliche Grundschule Schönstedt"
+
+[params]
+  description = "Website der Staatlichen Grundschule Schönstedt im Unstrut-Hainich-Kreis."
+  schoolName = "Staatliche Grundschule Schönstedt"
+  schoolMotto = "Bewegung, Respekt und gemeinsames Lernen."
+  email = "gsschoenstedt@t-online.de"
+  phone = "036022 96526"
+
+[menus]
+  [[menus.main]]
+    name = "Start"
+    pageRef = "/"
+    weight = 10
+  [[menus.main]]
+    name = "Aktuelles"
+    pageRef = "/aktuelles"
+    weight = 20
+  [[menus.main]]
+    name = "Termine"
+    pageRef = "/termine"
+    weight = 30
+  [[menus.main]]
+    name = "Über uns"
+    pageRef = "/schule"
+    weight = 40
+  [[menus.main]]
+    name = "Schulleben"
+    pageRef = "/schulleben"
+    weight = 45
+  [[menus.main]]
+    name = "Hort"
+    pageRef = "/hortbetreuung"
+    weight = 48
+  [[menus.main]]
+    name = "Service"
+    pageRef = "/eltern"
+    weight = 50
+  [[menus.main]]
+    name = "Downloads"
+    pageRef = "/downloads"
+    weight = 55
+  [[menus.main]]
+    name = "Kontakt"
+    pageRef = "/kontakt"
+    weight = 60
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true

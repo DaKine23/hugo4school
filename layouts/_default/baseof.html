@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="{{ site.Language.LanguageCode | default "de" }}">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="{{ site.Params.description }}">
+    <title>{{ if .IsHome }}{{ site.Title }}{{ else }}{{ .Title }} | {{ site.Title }}{{ end }}</title>
+    <link rel="stylesheet" href="{{ "css/main.css" | relURL }}">
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="{{ relURL "" }}" aria-label="{{ site.Title }}">
+        <span class="brand-mark" aria-hidden="true">
+          <span></span><span></span><span></span><span></span>
+        </span>
+        <span>
+          <strong>{{ site.Params.schoolName }}</strong>
+          <small>{{ site.Params.schoolMotto }}</small>
+        </span>
+      </a>
+      <nav class="site-nav" aria-label="Hauptnavigation">
+        {{ range site.Menus.main }}
+          <a href="{{ .URL }}">{{ .Name }}</a>
+        {{ end }}
+      </nav>
+    </header>
+    <div class="fence-strip" aria-hidden="true">
+      <span></span><span></span><span></span><span></span><span></span><span></span>
+      <span></span><span></span><span></span><span></span><span></span><span></span>
+    </div>
+
+    <main>
+      {{ block "main" . }}{{ end }}
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-fence" aria-hidden="true">
+        <span></span><span></span><span></span><span></span><span></span>
+      </div>
+      <p>&copy; {{ now.Year }} {{ site.Params.schoolName }}</p>
+      <nav aria-label="Rechtliches">
+        <a href="{{ relURL "impressum/" }}">Impressum</a>
+        <a href="{{ relURL "datenschutz/" }}">Datenschutz</a>
+        <a href="{{ relURL "quellen/" }}">Quellen</a>
+      </nav>
+    </footer>
+  </body>
+</html>

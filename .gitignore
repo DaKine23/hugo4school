@@ -1,0 +1,8 @@
+public/
+resources/_gen/
+.hugo_build.lock
+.firebase/
+firebase-debug.log
+test-artifacts/
+node_modules/
+
