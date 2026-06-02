@@ -270,6 +270,172 @@ a {
   height: calc(7rem + var(--scroll-progress) * 0.8rem);
 }
 
+.parallax-scene {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+  background:
+    linear-gradient(180deg, rgba(223, 242, 255, 0.9) 0, rgba(237, 248, 255, 0.72) 34%, rgba(255, 250, 241, 0.86) 58%, rgba(213, 235, 182, 0.68) 100%);
+}
+
+.parallax-scene::before,
+.parallax-scene::after {
+  content: "";
+  position: absolute;
+  left: -10vw;
+  right: -10vw;
+  bottom: calc(-7rem + var(--scroll-progress) * -2.2rem);
+  height: 28vh;
+  min-height: 190px;
+  border-radius: 50% 50% 0 0 / 38% 38% 0 0;
+}
+
+.parallax-scene::before {
+  background: linear-gradient(180deg, rgba(128, 190, 105, 0.32), rgba(94, 160, 89, 0.42));
+  transform: translateX(calc(var(--fence-wave) * 1.1rem));
+}
+
+.parallax-scene::after {
+  bottom: calc(-10rem + var(--scroll-progress) * -1rem);
+  background: linear-gradient(180deg, rgba(91, 164, 98, 0.18), rgba(76, 135, 84, 0.28));
+  transform: translateX(calc(var(--fence-bob) * -1.4rem));
+}
+
+.cloud {
+  position: absolute;
+  width: 8rem;
+  height: 2.4rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.72);
+  box-shadow:
+    1.6rem -0.9rem 0 0.25rem rgba(255, 255, 255, 0.72),
+    3.7rem -0.45rem 0 0.55rem rgba(255, 255, 255, 0.72),
+    5.6rem 0 0 0.1rem rgba(255, 255, 255, 0.72);
+  filter: drop-shadow(0 0.4rem 0.9rem rgba(47, 127, 193, 0.08));
+  transform: translate3d(calc(var(--scroll-progress) * -5rem), calc(var(--scroll-progress) * 2.2rem), 0);
+}
+
+.cloud-one {
+  top: 14rem;
+  left: 8vw;
+}
+
+.cloud-two {
+  top: 23rem;
+  right: 12vw;
+  width: 6.5rem;
+  opacity: 0.58;
+  transform: translate3d(calc(var(--scroll-progress) * 6rem), calc(var(--scroll-progress) * 1.4rem), 0) scale(0.88);
+}
+
+.cloud-three {
+  top: 39rem;
+  left: 56vw;
+  width: 5.8rem;
+  opacity: 0.45;
+  transform: translate3d(calc(var(--scroll-progress) * -8rem), calc(var(--scroll-progress) * -1rem), 0) scale(0.72);
+}
+
+.playground {
+  position: absolute;
+  right: clamp(1rem, 7vw, 7rem);
+  bottom: calc(2.2rem + var(--scroll-progress) * -3rem);
+  width: clamp(12rem, 24vw, 21rem);
+  height: clamp(8rem, 15vw, 13rem);
+  opacity: 0.42;
+  transform:
+    translate3d(calc(var(--fence-wave) * -1.4rem), calc(var(--fence-bob) * 0.45rem), 0)
+    scale(calc(1 + var(--scroll-progress) * 0.04));
+}
+
+.playground::before {
+  content: "";
+  position: absolute;
+  left: 0.4rem;
+  right: 0.4rem;
+  bottom: 0;
+  height: 0.45rem;
+  border-radius: 999px;
+  background: rgba(79, 157, 105, 0.72);
+}
+
+.slide {
+  position: absolute;
+  left: 1rem;
+  bottom: 0.3rem;
+  width: 6.7rem;
+  height: 6.4rem;
+  border-left: 0.55rem solid rgba(47, 127, 193, 0.78);
+  border-top: 0.55rem solid rgba(47, 127, 193, 0.78);
+}
+
+.slide::before {
+  content: "";
+  position: absolute;
+  left: 1.9rem;
+  bottom: -0.05rem;
+  width: 8rem;
+  height: 0.75rem;
+  border-radius: 999px;
+  background: rgba(230, 111, 81, 0.82);
+  transform: rotate(-28deg);
+  transform-origin: left center;
+}
+
+.slide::after {
+  content: "";
+  position: absolute;
+  left: 0.2rem;
+  top: 1rem;
+  width: 3.2rem;
+  height: 0.4rem;
+  border-radius: 999px;
+  background: rgba(244, 197, 66, 0.85);
+}
+
+.swing {
+  position: absolute;
+  right: 1.2rem;
+  bottom: 0.3rem;
+  width: 6.5rem;
+  height: 7rem;
+  border-left: 0.48rem solid rgba(123, 97, 168, 0.72);
+  border-right: 0.48rem solid rgba(123, 97, 168, 0.72);
+  border-top: 0.48rem solid rgba(123, 97, 168, 0.72);
+  transform: skewX(-7deg);
+}
+
+.swing::before,
+.swing::after {
+  content: "";
+  position: absolute;
+  top: 0.2rem;
+  width: 0.18rem;
+  height: 4.2rem;
+  background: rgba(36, 49, 61, 0.36);
+}
+
+.swing::before {
+  left: 2rem;
+}
+
+.swing::after {
+  right: 2rem;
+}
+
+.ball {
+  position: absolute;
+  left: 50%;
+  bottom: 0.7rem;
+  width: 1.8rem;
+  height: 1.8rem;
+  border-radius: 50%;
+  background: rgba(217, 75, 95, 0.82);
+  box-shadow: inset -0.35rem -0.35rem 0 rgba(36, 49, 61, 0.08);
+}
+
 .site-nav,
 .site-footer nav {
   display: flex;
@@ -423,12 +589,48 @@ a {
     rotate(calc(var(--fence-bob) * 1deg));
 }
 
+main {
+  position: relative;
+  z-index: 1;
+}
+
 .quick-info,
 .section-grid,
 .item-list,
 .page {
   width: min(1120px, calc(100% - 2rem));
   margin: 0 auto;
+}
+
+.quick-info,
+.section-grid,
+.page {
+  position: relative;
+  z-index: 2;
+}
+
+.quick-info::before,
+.section-grid::before,
+.page::before {
+  content: "";
+  position: absolute;
+  inset: -1.2rem -1rem;
+  z-index: -1;
+  border-radius: 1rem;
+  background: rgba(255, 250, 241, 0.72);
+  backdrop-filter: blur(1px);
+}
+
+.section-grid::before {
+  inset: -1.4rem -1rem -2rem;
+}
+
+.page::before {
+  inset: 1.2rem -1rem;
+}
+
+.hero + .quick-info::before {
+  display: none;
 }
 
 .quick-info {
@@ -444,8 +646,9 @@ a {
   padding: 1rem 1.25rem;
   border-left: 0.35rem solid var(--blue);
   border-radius: 0.5rem;
-  background: var(--surface);
+  background: rgba(255, 255, 255, 0.9);
   box-shadow: 0 0.5rem 1.5rem rgba(36, 49, 61, 0.06);
+  backdrop-filter: blur(5px);
 }
 
 .quick-info article:nth-child(2) {
@@ -479,8 +682,9 @@ a {
   border: 1px solid var(--line);
   border-radius: 0.5rem;
   padding: 1.25rem;
-  background: var(--surface);
+  background: rgba(255, 255, 255, 0.9);
   box-shadow: 0 0.5rem 1.5rem rgba(36, 49, 61, 0.06);
+  backdrop-filter: blur(5px);
 }
 
 .section-grid article,
@@ -639,6 +843,37 @@ a {
 
   .scroll-fence span {
     width: 1rem;
+  }
+
+  .cloud-one {
+    top: 18rem;
+    left: -1rem;
+    transform: translate3d(calc(var(--scroll-progress) * -2rem), calc(var(--scroll-progress) * 1.2rem), 0) scale(0.72);
+  }
+
+  .cloud-two {
+    top: 30rem;
+    right: -2rem;
+    transform: translate3d(calc(var(--scroll-progress) * 2.4rem), calc(var(--scroll-progress) * 1rem), 0) scale(0.62);
+  }
+
+  .cloud-three {
+    display: none;
+  }
+
+  .playground {
+    right: -3rem;
+    bottom: calc(1.2rem + var(--scroll-progress) * -2rem);
+    width: 13rem;
+    height: 8rem;
+    opacity: 0.28;
+  }
+
+  .quick-info::before,
+  .section-grid::before,
+  .page::before {
+    inset-inline: -0.5rem;
+    border-radius: 0.8rem;
   }
 }
 
